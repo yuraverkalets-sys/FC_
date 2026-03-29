@@ -1,5 +1,32 @@
+// ── Theme toggle ─────────────────────────────────────────────
+(function() {
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+})();
+
 // ── Title blur-lift reveal ──────────────────────────────────
 gsap.registerPlugin(ScrollTrigger);
+
+// ── Hide/show nav on scroll ───────────────────────────────
+(function() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > lastY && y > 80) {
+      nav.classList.add('nav--hidden');
+    } else {
+      nav.classList.remove('nav--hidden');
+    }
+    lastY = y;
+  }, { passive: true });
+})();
 
 // ── CTA parallax ─────────────────────────────────────────
 const ctaBg = document.getElementById('ctaBg');
@@ -179,4 +206,22 @@ function askChip(q) {
 
 function closeAns() {
   document.getElementById('barAnswer').classList.remove('open');
+}
+
+// ── Contact modal ─────────────────────────────────────────
+function openContact() {
+  document.getElementById('contactModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContact() {
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeContactOutside(e) {
+  if (e.target === document.getElementById('contactModal')) closeContact();
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeContact(); });
+function submitContact(e) {
+  e.preventDefault();
+  e.target.innerHTML = '<p style="text-align:center;color:var(--text);font-size:18px;line-height:1.6;padding:32px 0">Thanks — we\'ll be in touch within 24h.</p>';
 }

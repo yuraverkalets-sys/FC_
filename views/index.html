@@ -7,6 +7,9 @@
   <meta name="description" content="Bad design decisions kill more products than bad code. Fivecube is a product agency that takes your idea from concept to launch — and from broken to converting.">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
 </head>
 <body>
 
@@ -39,7 +42,13 @@
     <li><a href="#">Insights</a></li>
     <li><a href="#">Company</a></li>
   </ul>
-  <a href="#" class="nav-cta">Let's build</a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="#" class="nav-cta" onclick="openContact(); return false;">Let's build</a>
+  </div>
 </nav>
 
 <!-- ── HERO ── -->
@@ -49,7 +58,7 @@
     <h1 class="hero-title" data-blur-text>AI can generate<br>screens.<br><em>It can't replace<br>thinking.</em></h1>
     <p class="hero-sub">Bad decisions kill more products than bad code. Fivecube takes products from idea to launch — and from broken to converting. SaaS and Fintech teams in EU, UK & North America.</p>
     <div class="hero-actions">
-      <a href="#" class="btn-primary">Let's start →</a>
+      <a href="#" class="btn-primary" onclick="openContact(); return false;">Let's start →</a>
       <a href="#" class="btn-ghost">View our work</a>
     </div>
   </div>
@@ -351,7 +360,7 @@
       <h2 data-blur-text>Got a product that needs<br>to work harder?</h2>
       <p>Most teams we talk to already know something is broken. They just don't know exactly what — or where to start. One 30-minute call and we'll tell you. No pitch. No pressure. Just clarity.</p>
     </div>
-    <a href="#" class="btn-cta">See if we're a fit →</a>
+    <a href="#" class="btn-cta" onclick="openContact(); return false;">See if we're a fit →</a>
   </div>
 </div>
 
@@ -397,14 +406,14 @@
     </div>
   </div>
   <div class="faq-list" id="faqList">
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you have experience working with early-stage startups?<span class="faq-icon">+</span></div><div class="faq-a">Yes — and not just experience. Most of our clients are founders building their first or second product. We've designed MVPs, rebuilt onboarding flows, and shipped full products from zero. We understand that speed and budget discipline matter as much as the design itself.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which payment options does your digital product design agency work with?<span class="faq-icon">+</span></div><div class="faq-a">Staged payments tied to milestones, or monthly retainers for ongoing work. We'll find a structure that works for your budget and project type.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How fast can you develop an MVP?<span class="faq-icon">+</span></div><div class="faq-a">Most MVPs take 3–6 weeks depending on scope and complexity. The biggest variable is usually how fast decisions get made on your side — and we'll help you structure that process too.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if the output doesn't meet my expectations?<span class="faq-icon">+</span></div><div class="faq-a">Every project includes two revision rounds per stage. We also run a thorough discovery phase upfront so expectations are aligned before a single screen is designed.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How often do you communicate with the client?<span class="faq-icon">+</span></div><div class="faq-a">Weekly or bi-weekly check-ins depending on pace. Plus daily async updates via Slack, WhatsApp, Discord, or Teams — whatever you already use.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you charge per hour or have a fixed price list?<span class="faq-icon">+</span></div><div class="faq-a">UX audits are fixed price. Design and development projects are typically hourly with a detailed upfront estimate. Fixed-price contracts are available for fully locked scopes.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer development services in addition to design?<span class="faq-icon">+</span></div><div class="faq-a">Yes. Fivecube is a full-cycle agency. UI/UX design, frontend, backend, QA, and deployment — one team, one point of accountability, no messy handoffs between vendors.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can you support my product post-launch?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely. Many of our clients stay on retainer long after launch. We provide ongoing design and development support — on retainer or per-task, depending on what you need.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you have experience working with early-stage startups?<span class="faq-icon">+</span></div><div class="faq-a">Yes — and not just experience, it's what we're built for. Most of our clients are founders working on their first or second product. We've taken ideas from zero to funded, rebuilt broken onboarding flows, and shipped MVPs under real-world budget and time constraints. We know speed and capital efficiency matter as much as craft.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which payment options does your digital product design agency work with?<span class="faq-icon">+</span></div><div class="faq-a">We offer milestone-based payments for fixed-scope projects, and monthly retainers for ongoing design or development support. We don't ask for full payment upfront — each milestone is tied to a clear deliverable you approve before the next phase begins. We'll structure something that fits your cash flow.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How fast can you develop an MVP?<span class="faq-icon">+</span></div><div class="faq-a">Most MVPs take 3–6 weeks from kickoff to a shippable product, depending on scope and feature complexity. The biggest factor is usually decision speed on your side — and we help you structure that process during discovery so it doesn't slow us down. Projects have gone from contract to TestFlight in under four weeks.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if the output doesn't meet my expectations?<span class="faq-icon">+</span></div><div class="faq-a">Every stage includes two structured revision rounds. More importantly, we run a thorough discovery phase before any screen is designed — so expectations, goals, and edge cases are agreed on in writing before we build. Surprises at the delivery stage are a process failure, and we take that seriously.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How often do you communicate with the client?<span class="faq-icon">+</span></div><div class="faq-a">Weekly or bi-weekly video check-ins depending on project pace, plus daily async updates via whatever channel you already use — Slack, WhatsApp, Linear, or Notion. You'll always know what's in progress, what's blocked, and what's next. No waiting for a weekly status email to know where things stand.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you charge per hour or have a fixed price list?<span class="faq-icon">+</span></div><div class="faq-a">UX audits and well-defined scopes are fixed price. Design and development projects typically run hourly with a detailed estimate upfront — you know the ceiling before we start. For fully locked scopes we offer fixed-price contracts. We'll recommend the model that protects you best for your specific project type.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer development services in addition to design?<span class="faq-icon">+</span></div><div class="faq-a">Yes. Fivecube is a full-cycle studio — UI/UX, frontend, backend, QA, and deployment under one roof. No handoffs between a design agency and a separate dev shop. One team owns the whole thing, which means fewer gaps, faster iteration, and a single point of accountability when something needs fixing after launch.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can you support my product post-launch?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely. Many of our longest-running client relationships started as a single MVP. We offer ongoing design and development support on retainer or per-task — whatever matches your pace. Post-launch we typically help with iteration based on user data, new feature rollouts, and performance optimisation.</div></div>
   </div>
 </section>
 
@@ -488,7 +497,7 @@
           Lviv, Ukraine · EU · UK · North America
         </li>
       </ul>
-      <a href="#contact" class="ft-cta">See if we're a fit →</a>
+      <a href="#" class="ft-cta" onclick="openContact(); return false;">See if we're a fit →</a>
     </div>
 
   </div>
@@ -556,6 +565,36 @@
         <div class="ans-chips" id="ansChips"></div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="contact-modal" onclick="closeContactOutside(event)">
+  <div class="contact-card">
+    <button class="contact-close" onclick="closeContact()" aria-label="Close">✕</button>
+    <p class="contact-label">Let's work together</p>
+    <h2 class="contact-title">Tell us about your project</h2>
+    <form class="contact-form" onsubmit="submitContact(event)">
+      <div class="cf-row">
+        <label class="cf-field">
+          <span>Name</span>
+          <input type="text" placeholder="Your name" required>
+        </label>
+        <label class="cf-field">
+          <span>Email</span>
+          <input type="email" placeholder="you@company.com" required>
+        </label>
+      </div>
+      <label class="cf-field">
+        <span>Company <em>(optional)</em></span>
+        <input type="text" placeholder="Acme Inc.">
+      </label>
+      <label class="cf-field">
+        <span>What are you building?</span>
+        <textarea rows="4" placeholder="Tell us about your product, goals, and where you're at…" required></textarea>
+      </label>
+      <button type="submit" class="btn-primary contact-submit">Send message →</button>
+    </form>
   </div>
 </div>
 

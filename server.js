@@ -29,11 +29,12 @@ app.use((req, res, next) => {
 });
 
 // Serve static files from /public with cache control
+const isDev = process.env.NODE_ENV !== 'production';
 app.use(
   express.static(path.join(__dirname, 'public'), {
-    maxAge: '1d',
-    etag: true,
-    lastModified: true
+    maxAge: isDev ? 0 : '1d',
+    etag: !isDev,
+    lastModified: !isDev
   })
 );
 
