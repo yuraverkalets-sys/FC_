@@ -43,6 +43,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
+// Serve contact page on GET /contact
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'contact.html'));
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).send('Not found');

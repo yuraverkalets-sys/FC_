@@ -210,7 +210,9 @@ function closeAns() {
 
 // ── Contact modal ─────────────────────────────────────────
 function openContact() {
-  document.getElementById('contactModal').classList.add('open');
+  const modal = document.getElementById('contactModal');
+  if (!modal) return;
+  modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeContact() {
@@ -224,4 +226,21 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
 function submitContact(e) {
   e.preventDefault();
   e.target.innerHTML = '<p style="text-align:center;color:var(--text);font-size:18px;line-height:1.6;padding:32px 0">Thanks — we\'ll be in touch within 24h.</p>';
+}
+
+// ── Contact page (contact.html) ────────────────────────────
+function submitContactPage(e) {
+  e.preventDefault();
+  const wrap = document.querySelector('.contact-form-wrap');
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <div class="contact-success">
+      <div class="contact-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out. We'll review your project and get back to you within 24 hours.</p>
+      <a href="/" class="btn-ghost" style="margin-top:8px">Back to home</a>
+    </div>
+  `;
 }
