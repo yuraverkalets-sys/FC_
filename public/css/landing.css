@@ -9,7 +9,7 @@
 .l-hero-scene {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  background: #C06040 url('/images/herro-bg.jpg') center center / cover no-repeat;
+  background: #C06040 url('/images/herro-bg.webp') center center / cover no-repeat;
 }
 
 /* Nav - floating frosted glass pill, centered, 70% wide */
@@ -333,7 +333,7 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 
 /* ── CTA BLOCKS ────────────────────────────────────────────── */
 .l-cta-dark {
-  background: var(--bar-bg) url('/images/cta-bg.png') center center / cover no-repeat;
+  background: var(--bar-bg) url('/images/cta-bg.webp') center center / cover no-repeat;
   padding: 80px 0;
 }
 .l-cta-dark-inner,
