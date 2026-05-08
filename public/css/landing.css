@@ -311,7 +311,7 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 }
 .l-pain-quote {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.55;
   color: var(--text);
   margin-bottom: 10px;
@@ -691,7 +691,7 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 }
 .l-process-title {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -.015em;
   color: var(--text);
   margin-bottom: 16px;
