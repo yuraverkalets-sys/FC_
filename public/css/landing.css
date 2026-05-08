@@ -74,6 +74,8 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 .l-hero-scene .l-hero-title { color: rgba(255, 255, 255, 0.95); }
 .l-hero-scene .l-hero-sub   { color: rgba(255, 255, 255, 0.68); }
 .l-hero-scene .l-hero-trust { color: #fff; }
+.l-hero-line1 { color: #FFB98F !important; }
+.l-hero-line2 { color: rgba(255, 255, 255, 0.95) !important; }
 
 /* Ghost button on dark bg */
 .l-hero-scene .btn-ghost {
