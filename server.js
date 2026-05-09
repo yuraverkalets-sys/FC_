@@ -48,6 +48,15 @@ app.get('/contact', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'contact.html'));
 });
 
+// Serve design landing page on GET /landing_1_test
+app.get('/landing_1_test', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'landing_1_test.html'));
+});
+
+app.get('/landing_test_2', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'landing_1_test.html'));
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).send('Not found');

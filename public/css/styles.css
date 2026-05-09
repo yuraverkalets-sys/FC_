@@ -153,18 +153,17 @@
     /* ── BTN SYSTEM ── */
     .btn-primary {
       display:inline-flex; align-items:center; gap:8px;
-      padding:14px 30px; border-radius:999px;
+      padding:14px 26px; border-radius:999px;
       background:var(--orange); color:var(--text);
       font-size:15px; font-weight:500; text-decoration:none; border:none; cursor:pointer;
-      transition: background .25s, color .25s, transform .15s, box-shadow .25s;
+      transition: background .25s, color .25s, box-shadow .25s;
       box-shadow:0 2px 0 rgba(0,0,0,.08);
     }
     .btn-primary:hover {
       background:var(--text); color:var(--bg);
-      transform:translateY(-2px);
       box-shadow:0 6px 20px rgba(23,25,27,.2);
     }
-    .btn-primary:active { transform:translateY(0); }
+    .btn-primary:active { opacity: .85; }
     .btn-ghost {
       display:inline-flex; align-items:center; gap:6px;
       padding:14px 26px; border-radius:999px;
@@ -408,7 +407,7 @@
     }
     .review-card:hover { background:var(--surface2); }
     .review-stars { color:var(--orange); font-size:16px; letter-spacing:2px; }
-    .review-quote { font-size:18px; line-height:1.7; color:var(--text); font-style:italic; flex:1; }
+    .review-quote { font-size:18px; line-height:1.7; color:var(--text); flex:1; }
     .review-author { font-size:14px; color:var(--faint); }
     .review-author strong { color:var(--muted); font-weight:500; display:block; margin-bottom:2px; }
     .clutch-badge {

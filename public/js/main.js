@@ -10,7 +10,7 @@
 })();
 
 // ── Title blur-lift reveal ──────────────────────────────────
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, Flip);
 
 // ── Hide/show nav on scroll ───────────────────────────────
 (function() {
@@ -169,13 +169,14 @@ async function askAI() {
   const panel = document.getElementById('barAnswer');
   const txt = document.getElementById('ansText');
   const chips = document.getElementById('ansChips');
-  const dot = document.getElementById('ansDot');
   const statusEl = document.querySelector('.bar-brand-status');
   const bar = document.querySelector('.bottom-bar');
 
   txt.innerHTML = '<div class="loading"><span></span><span></span><span></span></div>';
-  chips.innerHTML = ''; dot.classList.remove('done');
+  chips.innerHTML = '';
   panel.classList.add('open');
+  const closeBtn = document.getElementById('barClose');
+  if (closeBtn) closeBtn.style.display = 'flex';
   bar.classList.add('focused', 'thinking');
   if (statusEl) statusEl.textContent = 'Thinking…';
   inp.value = '';
@@ -191,7 +192,6 @@ async function askAI() {
   await new Promise(r => { (function tick(){ if(i<raw.length){i+=Math.ceil(Math.random()*2);i=Math.min(i,raw.length);tw.textContent=raw.slice(0,i);setTimeout(tick,13);}else r(); })(); });
 
   txt.innerHTML = formatted;
-  dot.classList.add('done');
   bar.classList.remove('thinking');
   if (statusEl) statusEl.textContent = 'Ready to help';
 
@@ -206,6 +206,8 @@ function askChip(q) {
 
 function closeAns() {
   document.getElementById('barAnswer').classList.remove('open');
+  const closeBtn = document.getElementById('barClose');
+  if (closeBtn) closeBtn.style.display = 'none';
 }
 
 // ── Contact modal ─────────────────────────────────────────
@@ -244,3 +246,67 @@ function submitContactPage(e) {
     </div>
   `;
 }
+
+// ── OneElementScroll — Works Section ──────────────────────────
+(function () {
+  const worksOne    = document.getElementById('worksOne');
+  const worksIntro  = document.getElementById('worksOneIntro');
+  const worksSection = document.getElementById('works');
+  if (!worksOne || !worksIntro || !worksSection) return;
+
+  const steps = worksSection.querySelectorAll('[data-step]');
+
+  // Morph worksOne to match a target element's viewport position/size
+  function fitTo(target, color, duration) {
+    const r = target.getBoundingClientRect();
+    gsap.to(worksOne, {
+      x: r.left,
+      y: r.top,
+      width:  r.width,
+      height: r.height,
+      backgroundColor: color,
+      duration: duration !== undefined ? duration : 0.55,
+      ease: 'power2.inOut',
+    });
+  }
+
+  // Fade in/out and add class to hide original card visuals
+  ScrollTrigger.create({
+    trigger: worksSection,
+    start: 'top 60%',
+    end:   'bottom 40%',
+    onEnter() {
+      const r = worksIntro.getBoundingClientRect();
+      gsap.set(worksOne, {
+        x: r.left, y: r.top,
+        width: r.width, height: r.height,
+        backgroundColor: 'var(--orange)',
+      });
+      gsap.to(worksOne, { opacity: 1, duration: 0.35 });
+      worksSection.classList.add('one-active');
+    },
+    onLeave() {
+      gsap.to(worksOne, { opacity: 0, duration: 0.3 });
+      worksSection.classList.remove('one-active');
+    },
+    onEnterBack() {
+      gsap.to(worksOne, { opacity: 1, duration: 0.35 });
+      worksSection.classList.add('one-active');
+    },
+    onLeaveBack() {
+      gsap.to(worksOne, { opacity: 0, duration: 0.3 });
+      worksSection.classList.remove('one-active');
+    },
+  });
+
+  // Morph to each card as it scrolls into view
+  steps.forEach(function (step) {
+    var color = step.dataset.color || 'var(--orange)';
+    ScrollTrigger.create({
+      trigger: step.closest('.work-card'),
+      start: 'center 75%',
+      onEnter:     function () { fitTo(step, color); },
+      onEnterBack: function () { fitTo(step, color); },
+    });
+  });
+})();
