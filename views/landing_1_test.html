@@ -18,7 +18,7 @@
   <meta name="twitter:image" content="/images/og-image.jpg">
 
   <link rel="stylesheet" href="/css/styles.css?v=3">
-  <link rel="stylesheet" href="/css/landing.css?v=19">
+  <link rel="stylesheet" href="/css/landing.css?v=20">
 </head>
 <body>
 
@@ -109,56 +109,75 @@
     <h2>We've heard it all.</h2>
     <p class="l-section-sub">The same problems keep showing up - just wearing different logos.</p>
   </div>
-  <div class="l-pain-grid">
 
-    <!-- SaaS -->
-    <div class="l-pain-col">
-      <div class="l-pain-col-header"><span class="tag">SaaS Platforms</span></div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>"We're losing trials to a competitor with a worse product - just a better UI."</p>
-        <p class="l-pain-body">Users decide in seconds. If the first 30 seconds of your trial feel confusing, they're gone - and they're not converting to paid.</p>
-      </div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>"Our expansion revenue is flat. Power users love it - everyone else barely uses it."</p>
-        <p class="l-pain-body">Shallow activation means shallow expansion. If your UX buries the features that drive upgrade decisions, you're leaving NRR on the table every month.</p>
-      </div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>"We quoted a $40K redesign to our board. They said come back with something realistic."</p>
-        <p class="l-pain-body">You have a roadmap, a burn rate, and a Series B to close. You need a redesign that ships on a timeline that doesn't require a board vote.</p>
+  <div class="l-pain-tabs">
+
+    <div class="l-pain-tab-bar" role="tablist">
+      <button class="l-pain-tab active" data-tab="saas" role="tab">SaaS Platforms</button>
+      <button class="l-pain-tab" data-tab="ai" role="tab">AI SaaS Products</button>
+      <button class="l-pain-tab" data-tab="fintech" role="tab">Fintech / Payments</button>
+    </div>
+
+    <!-- SaaS panel -->
+    <div class="l-pain-panel active" id="pain-saas" role="tabpanel">
+      <div class="l-pain-cards">
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+          <p class="l-pain-quote">"We're losing trials to a competitor with a worse product - just a better UI."</p>
+          <p class="l-pain-body">Users decide in seconds. If the first 30 seconds of your trial feel confusing, they're gone - and they're not converting to paid.</p>
+        </div>
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <p class="l-pain-quote">"Our expansion revenue is flat. Power users love it - everyone else barely uses it."</p>
+          <p class="l-pain-body">Shallow activation means shallow expansion. If your UX buries the features that drive upgrade decisions, you're leaving NRR on the table every month.</p>
+        </div>
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p class="l-pain-quote">"We quoted a $40K redesign to our board. They said come back with something realistic."</p>
+          <p class="l-pain-body">You have a roadmap, a burn rate, and a Series B to close. You need a redesign that ships on a timeline that doesn't require a board vote.</p>
+        </div>
       </div>
     </div>
 
-    <!-- AI SaaS -->
-    <div class="l-pain-col">
-      <div class="l-pain-col-header"><span class="tag">AI SaaS Products</span></div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>"Users don't understand what our AI actually does. They sign up, poke around, and churn."</p>
-        <p class="l-pain-body">AI products fail at UX when the output is powerful but the interface doesn't explain the value. Confusion kills retention before the product gets a chance.</p>
-      </div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>"Enterprise buyers are nervous about the 'black box' in demos. We're losing deals."</p>
-        <p class="l-pain-body">At $50K+ ACV, buyers need to see control, not magic. When your AI interface doesn't communicate confidence and transparency, trust erodes before the contract hits legal.</p>
-      </div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>"Our last designer had never seen a model inference call. The handoff was a disaster."</p>
-        <p class="l-pain-body">Designing AI products requires understanding latency states, confidence scores, fallback UX, and streaming outputs. Generic designers don't know what they don't know.</p>
+    <!-- AI SaaS panel -->
+    <div class="l-pain-panel" id="pain-ai" role="tabpanel">
+      <div class="l-pain-cards">
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <p class="l-pain-quote">"Users don't understand what our AI actually does. They sign up, poke around, and churn."</p>
+          <p class="l-pain-body">AI products fail at UX when the output is powerful but the interface doesn't explain the value. Confusion kills retention before the product gets a chance.</p>
+        </div>
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          <p class="l-pain-quote">"Enterprise buyers are nervous about the 'black box' in demos. We're losing deals."</p>
+          <p class="l-pain-body">At $50K+ ACV, buyers need to see control, not magic. When your AI interface doesn't communicate confidence and transparency, trust erodes before the contract hits legal.</p>
+        </div>
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <p class="l-pain-quote">"Our last designer had never seen a model inference call. The handoff was a disaster."</p>
+          <p class="l-pain-body">Designing AI products requires understanding latency states, confidence scores, fallback UX, and streaming outputs. Generic designers don't know what they don't know.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Fintech -->
-    <div class="l-pain-col">
-      <div class="l-pain-col-header"><span class="tag">Fintech / Payments</span></div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>"Our onboarding takes 9 steps. We know it. Users know it. Our NPS knows it."</p>
-        <p class="l-pain-body">In fintech, friction is a conversion killer. Every extra step is users abandoning your funnel for a competitor.</p>
-      </div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>"We're regulated. Lawyers approved the copy. Nobody approved how unreadable it is."</p>
-        <p class="l-pain-body">Compliance copy doesn't have to mean broken UX. We've redesigned regulated products — disclosures, KYC steps, consent flows — without touching what legal approved.</p>
-      </div>
-      <div class="l-pain-pair">
-        <p class="l-pain-quote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>"We launched a new product and it looks nothing like our main platform. Users are confused."</p>
-        <p class="l-pain-body">Fragmented design systems drive up support tickets and signal immaturity to enterprise buyers. A unified design language fixes that.</p>
+    <!-- Fintech panel -->
+    <div class="l-pain-panel" id="pain-fintech" role="tabpanel">
+      <div class="l-pain-cards">
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          <p class="l-pain-quote">"Our onboarding takes 9 steps. We know it. Users know it. Our NPS knows it."</p>
+          <p class="l-pain-body">In fintech, friction is a conversion killer. Every extra step is users abandoning your funnel for a competitor.</p>
+        </div>
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <p class="l-pain-quote">"We're regulated. Lawyers approved the copy. Nobody approved how unreadable it is."</p>
+          <p class="l-pain-body">Compliance copy doesn't have to mean broken UX. We've redesigned regulated products — disclosures, KYC steps, consent flows — without touching what legal approved.</p>
+        </div>
+        <div class="l-pain-card">
+          <svg class="l-pain-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <p class="l-pain-quote">"We launched a new product and it looks nothing like our main platform. Users are confused."</p>
+          <p class="l-pain-body">Fragmented design systems drive up support tickets and signal immaturity to enterprise buyers. A unified design language fixes that.</p>
+        </div>
       </div>
     </div>
 
@@ -568,6 +587,6 @@
   </div>
 </footer>
 
-<script src="/js/landing.js?v=7"></script>
+<script src="/js/landing.js?v=8"></script>
 </body>
 </html>

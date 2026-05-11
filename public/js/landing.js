@@ -31,25 +31,14 @@
     el.innerHTML = el.innerHTML.replace(/(→)(?![^<]*<\/span>)/, '<span class="btn-arrow">$1</span>');
   });
 
-  // Pain section accordion (mobile only — CSS hides body by default at ≤760px)
-  document.querySelectorAll('.l-pain-pair').forEach(pair => {
-    const quote = pair.querySelector('.l-pain-quote');
-    const body  = pair.querySelector('.l-pain-body');
-    if (!quote || !body) return;
-    const icon = document.createElement('span');
-    icon.className = 'l-pain-toggle';
-    icon.textContent = '+';
-    quote.appendChild(icon);
-    quote.addEventListener('click', () => {
-      const isOpen = pair.classList.contains('open');
-      document.querySelectorAll('.l-pain-pair.open').forEach(p => {
-        p.classList.remove('open');
-        p.querySelector('.l-pain-toggle').textContent = '+';
-      });
-      if (!isOpen) {
-        pair.classList.add('open');
-        icon.textContent = '+';
-      }
+  // Pain section — tab switching
+  document.querySelectorAll('.l-pain-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.tab;
+      document.querySelectorAll('.l-pain-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.l-pain-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('pain-' + key).classList.add('active');
     });
   });
 

@@ -280,8 +280,44 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
   line-height: 1.75;
 }
 
-/* ── PAIN POINTS ───────────────────────────────────────────── */
-.l-pain-grid {
+/* ── PAIN POINTS — TABS ─────────────────────────────────────── */
+.l-pain-tabs { width: 100%; }
+
+.l-pain-tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.l-pain-tab-bar::-webkit-scrollbar { display: none; }
+
+.l-pain-tab {
+  flex-shrink: 0;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.l-pain-tab:hover { color: var(--text); }
+.l-pain-tab.active {
+  color: var(--text);
+  border-bottom-color: var(--orange);
+}
+
+.l-pain-panel { display: none; }
+.l-pain-panel.active { display: block; }
+
+.l-pain-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
@@ -290,46 +326,26 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
   border-radius: 18px;
   overflow: hidden;
 }
-.l-pain-col {
+
+.l-pain-card {
   background: var(--bg);
-  padding: 36px 28px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  padding: 32px 28px 36px;
   border-radius: 16px;
   border: 1px solid rgba(128,128,128,.10);
-  transition: background .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.l-pain-col:hover { background: var(--surface); }
-.l-pain-col-header {
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 32px;
-}
-.l-pain-pair {
-  padding-bottom: 28px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid var(--border2);
-}
-.l-pain-pair:last-child {
-  padding-bottom: 0;
-  margin-bottom: 0;
-  border-bottom: none;
-}
+
+.l-pain-card-icon { opacity: 0.45; flex-shrink: 0; }
+
 .l-pain-quote {
   font-size: 15px;
   font-weight: 300;
   line-height: 1.55;
   color: var(--text);
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
 }
-.l-pain-quote svg {
-  opacity: 0.45;
-}
+
 .l-pain-body {
   font-size: 13px;
   line-height: 1.8;
@@ -1125,7 +1141,8 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 
 /* ── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 1000px) {
-  .l-pain-grid { grid-template-columns: 1fr; border-radius: 16px; }
+  .l-pain-cards { grid-template-columns: 1fr 1fr; }
+  .l-pain-card:last-child { grid-column: 1 / -1; }
   .l-toolkit-row { grid-template-columns: 52px 1fr; }
   .l-toolkit-cat { display: none; }
 }
@@ -1152,38 +1169,10 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
   nav.nav--hidden { transform: translateY(-200%) !important; }
   .nav-links { display: none; }
 
-  /* Pain accordion — mobile */
-  .l-pain-pair { position: relative; padding-right: 28px; }
-  .l-pain-quote { cursor: pointer; }
-  .l-pain-toggle { display: inline-block; }
-}
-
-/* Hide toggle on desktop */
-.l-pain-toggle { display: none; }
-
-@media (max-width: 760px) {
-  .l-pain-toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 18px;
-    line-height: 1;
-    color: var(--muted);
-    transition: transform 0.25s ease;
-    display: inline-block;
-  }
-  .l-pain-pair.open .l-pain-toggle { transform: rotate(45deg); }
-  .l-pain-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding-bottom 0.3s ease;
-    padding-bottom: 0 !important;
-    margin-top: 0;
-  }
-  .l-pain-pair.open .l-pain-body {
-    max-height: 300px;
-    padding-bottom: 4px !important;
-  }
+  /* Pain tabs — mobile: 1 card per row */
+  .l-pain-cards { grid-template-columns: 1fr; }
+  .l-pain-card:last-child { grid-column: auto; }
+  .l-pain-tab { padding: 10px 16px; font-size: 11px; }
 }
 
 @media (max-width: 560px) {
