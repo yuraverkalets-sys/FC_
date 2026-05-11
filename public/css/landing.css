@@ -1140,8 +1140,6 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
   .l-cta-warm-inner { padding: 0; }
   .l-cases-grid { grid-template-columns: 1fr; }
   .l-test-list { grid-template-columns: 1fr; }
-  .l-test-row { grid-template-columns: 1fr; }
-  .l-test-media { width: 100%; aspect-ratio: 16 / 9; }
   .l-compare-grid { grid-template-columns: 1fr; }
   .l-process-grid { grid-template-columns: 1fr; }
   .l-footer { padding: 72px 0 48px; }
