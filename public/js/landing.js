@@ -104,6 +104,16 @@
     });
   });
 
+  // Equalize testimonial card heights across all rows
+  function equalizeTestRows() {
+    const rows = document.querySelectorAll('.l-test-row');
+    rows.forEach(r => r.style.minHeight = '');
+    const maxH = Math.max(...[...rows].map(r => r.offsetHeight));
+    rows.forEach(r => r.style.minHeight = maxH + 'px');
+  }
+  equalizeTestRows();
+  window.addEventListener('resize', equalizeTestRows);
+
   // FAQ accordion
   document.querySelectorAll('.l-faq-item').forEach(item => {
     const q = item.querySelector('.l-faq-q');
