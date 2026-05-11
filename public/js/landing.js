@@ -31,17 +31,6 @@
     el.innerHTML = el.innerHTML.replace(/(→)(?![^<]*<\/span>)/, '<span class="btn-arrow">$1</span>');
   });
 
-  // Pain section — tab switching
-  document.querySelectorAll('.l-pain-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const key = tab.dataset.tab;
-      document.querySelectorAll('.l-pain-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.l-pain-panel').forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('pain-' + key).classList.add('active');
-    });
-  });
-
   // Testimonial rows: play video on hover, mute toggle button
   document.querySelectorAll('.l-test-row').forEach(row => {
     const video = row.querySelector('.l-test-video');
