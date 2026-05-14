@@ -381,7 +381,7 @@
     .svc-num { font-family:var(--label); font-size:11px; font-weight:500; color:var(--faint); transition:color .2s; }
     .svc-name { font-size:18px; font-weight:400; letter-spacing:-.01em; transition:color .2s; }
     .svc-tags { display:flex; gap:6px; flex-wrap:wrap; }
-    .tag { padding:3px 10px; border-radius:0; width:fit-content; font-family:var(--label); font-size:10px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; background:var(--surface); color:var(--muted); border:1px solid var(--border); }
+    .tag { padding:3px 10px; border-radius:0; width:fit-content; font-family:var(--label); font-size:10px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; background:#9CBFCE; color:#17191B; border:none; }
     .tag.blue { background:rgba(156,191,206,.15); color:var(--blue-d); border-color:rgba(156,191,206,.4); }
     .svc-arrow { color:var(--faint); opacity:.35; transition:transform .2s,opacity .2s; text-align:right; }
 
@@ -1269,14 +1269,14 @@
   border-radius: 22px 16px 16px 22px;
   transition: background 0.2s ease;
 }
-.advantage-card--other:hover { background: var(--surface); }
+.advantage-card--other:hover { background: #D4D2C7; }
 .advantage-card--us {
   background: #E07040;
   flex: 1.22;
   border-radius: 16px 22px 22px 16px;
   transition: background 0.2s ease;
 }
-.advantage-card--us:hover { background: #c85e30; }
+.advantage-card--us:hover { background: #EA8A60; }
 .advantage-card--us:active { background: var(--orange); }
 .advantage-card-label {
   font-family: var(--label);

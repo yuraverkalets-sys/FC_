@@ -31,7 +31,9 @@
     el.innerHTML = el.innerHTML.replace(/(→)(?![^<]*<\/span>)/, '<span class="btn-arrow">$1</span>');
   });
 
-  // Testimonial rows: play video on hover, mute toggle button
+  const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+  // Testimonial rows: play video on hover (desktop) or tap (touch)
   document.querySelectorAll('.l-test-row').forEach(row => {
     const video = row.querySelector('.l-test-video');
     if (!video) return;
@@ -43,10 +45,9 @@
     row.querySelector('.l-test-media').appendChild(btn);
 
     let muted = true;
+    let playing = false;
 
-    const updateBtn = () => {
-      btn.classList.toggle('is-muted', muted);
-    };
+    const updateBtn = () => { btn.classList.toggle('is-muted', muted); };
     updateBtn();
 
     btn.addEventListener('click', e => {
@@ -56,30 +57,68 @@
       updateBtn();
     });
 
-    row.addEventListener('mouseenter', () => {
-      video.currentTime = 0;
-      video.muted = muted;
-      video.play().catch(() => {});
-    });
-    row.addEventListener('mouseleave', () => {
-      video.pause();
-      video.currentTime = 0;
-    });
+    if (isTouch) {
+      row.addEventListener('click', () => {
+        if (playing) {
+          video.pause();
+          video.currentTime = 0;
+          row.classList.remove('is-playing');
+          playing = false;
+        } else {
+          document.querySelectorAll('.l-test-video').forEach(v => v.pause());
+          document.querySelectorAll('.l-test-row').forEach(r => r.classList.remove('is-playing'));
+          video.currentTime = 0;
+          video.muted = muted;
+          video.play().catch(() => {});
+          row.classList.add('is-playing');
+          playing = true;
+        }
+      });
+    } else {
+      row.addEventListener('mouseenter', () => {
+        video.currentTime = 0;
+        video.muted = muted;
+        video.play().catch(() => {});
+      });
+      row.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }
   });
 
-  // Portfolio cards: show first frame as poster, play on hover
+  // Portfolio cards: play on hover (desktop) or tap (touch)
   document.querySelectorAll('.l-case-card').forEach(card => {
     const video = card.querySelector('.l-case-video');
     if (!video) return;
 
-    card.addEventListener('mouseenter', () => {
-      video.currentTime = 0;
-      video.play();
-    });
-    card.addEventListener('mouseleave', () => {
-      video.pause();
-      video.currentTime = 0;
-    });
+    if (isTouch) {
+      let playing = false;
+      card.addEventListener('click', () => {
+        if (playing) {
+          video.pause();
+          video.currentTime = 0;
+          card.classList.remove('is-playing');
+          playing = false;
+        } else {
+          document.querySelectorAll('.l-case-video').forEach(v => v.pause());
+          document.querySelectorAll('.l-case-card').forEach(c => c.classList.remove('is-playing'));
+          video.currentTime = 0;
+          video.play().catch(() => {});
+          card.classList.add('is-playing');
+          playing = true;
+        }
+      });
+    } else {
+      card.addEventListener('mouseenter', () => {
+        video.currentTime = 0;
+        video.play();
+      });
+      card.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }
   });
 
   // Equalize testimonial card heights across all rows
@@ -109,6 +148,78 @@
         icon.textContent = '+'; // rotation via CSS handles the visual
       }
     });
+  });
+
+  // Footer logo spotlight on hover
+  const footerLogo = document.querySelector('.l-footer-logo');
+  if (footerLogo) {
+    footerLogo.addEventListener('mousemove', e => {
+      const rect = footerLogo.getBoundingClientRect();
+      footerLogo.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      footerLogo.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+    });
+  }
+
+  // ── TIMELINE ──────────────────────────────────────────────
+
+  const timelineItems  = document.querySelectorAll('.l-timeline-item');
+  const processScroll  = document.querySelector('.l-process-scroll');
+
+  if (timelineItems.length && processScroll) {
+    const PER_CARD   = 500;  // px of scroll to bring in each card
+    const PAUSE      = 500;  // px held at full-stack before section exits
+    const scrollRoom = timelineItems.length * PER_CARD + PAUSE;
+
+    function isMobile() { return window.innerWidth <= 900; }
+
+    function initHeight() {
+      if (isMobile()) { processScroll.style.height = ''; return; }
+      processScroll.style.height = (window.innerHeight + scrollRoom) + 'px';
+    }
+
+    function updateCards() {
+      if (isMobile()) {
+        timelineItems.forEach(item => {
+          item.style.transform = 'none';
+          const card = item.querySelector('.l-timeline-card');
+          if (card) card.classList.remove('is-reached');
+        });
+        return;
+      }
+      const scrolled = -processScroll.getBoundingClientRect().top;
+      timelineItems.forEach((item, i) => {
+        const card = item.querySelector('.l-timeline-card');
+        if (i === 0) {
+          item.style.transform = 'translateY(0)';
+          if (card) card.classList.toggle('is-reached', scrolled > 80);
+        } else {
+          let p = Math.min(Math.max((scrolled - i * PER_CARD) / PER_CARD, 0), 1);
+          p = 1 - Math.pow(1 - p, 3);
+          item.style.transform = `translateY(${window.innerHeight * (1 - p)}px)`;
+          if (card) card.classList.toggle('is-reached', p > 0.85);
+        }
+      });
+    }
+
+    initHeight();
+    updateCards();
+    window.addEventListener('resize', () => { initHeight(); updateCards(); });
+    window.addEventListener('scroll', updateCards, { passive: true });
+  }
+
+
+  // CTA background scroll-driven image fade
+  document.querySelectorAll('.l-cta-dark').forEach(section => {
+    function updateCtaBg() {
+      const rect     = section.getBoundingClientRect();
+      const vh       = window.innerHeight;
+      const start    = vh;
+      const end      = vh * 0.3;
+      const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+      section.style.setProperty('--cta-img-opacity', progress.toFixed(3));
+    }
+    window.addEventListener('scroll', updateCtaBg, { passive: true });
+    updateCtaBg();
   });
 
 })();
