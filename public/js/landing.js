@@ -170,11 +170,14 @@
     const PAUSE      = 500;  // px held at full-stack before section exits
     const scrollRoom = timelineItems.length * PER_CARD + PAUSE;
 
+    const MAX_H = 860;
+
     function isMobile() { return window.innerWidth <= 900; }
+    function sectionH()  { return Math.min(window.innerHeight, MAX_H); }
 
     function initHeight() {
       if (isMobile()) { processScroll.style.height = ''; return; }
-      processScroll.style.height = (window.innerHeight + scrollRoom) + 'px';
+      processScroll.style.height = (sectionH() + scrollRoom) + 'px';
     }
 
     function updateCards() {
@@ -195,7 +198,7 @@
         } else {
           let p = Math.min(Math.max((scrolled - i * PER_CARD) / PER_CARD, 0), 1);
           p = 1 - Math.pow(1 - p, 3);
-          item.style.transform = `translateY(${window.innerHeight * (1 - p)}px)`;
+          item.style.transform = `translateY(${sectionH() * (1 - p)}px)`;
           if (card) card.classList.toggle('is-reached', p > 0.85);
         }
       });

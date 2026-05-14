@@ -851,7 +851,7 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 .l-section--timeline {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: min(100vh, 860px);
   max-width: none;
   padding: 0;
   overflow: hidden;
@@ -885,6 +885,8 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
   margin: 0;
   padding: 0;
   background: var(--bg);
+  border-radius: 16px;
+  overflow: hidden;
   opacity: 1;
   will-change: transform;
 }
@@ -893,23 +895,13 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 .l-timeline-item[data-index="2"] { top: 24px; z-index: 3; }
 .l-timeline-item.is-visible { opacity: 1; }
 /* Cover the peeking rounded corners of the card below */
-.l-timeline-item[data-index="1"]::before,
-.l-timeline-item[data-index="2"]::before {
-  content: '';
-  position: absolute;
-  top: -12px;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background: var(--bg);
-}
-
 .l-timeline-card {
   background: var(--surface);
-  border: 1px solid rgba(128,128,128,.10);
+  border: none;
+  box-shadow: inset 0 0 0 1px rgba(128,128,128,.10);
   border-radius: 16px;
   padding: 40px 36px;
-  transition: box-shadow .2s, border-color .4s;
+  transition: box-shadow .4s;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 48px;
@@ -937,16 +929,14 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
   object-fit: cover;
 }
 .l-timeline-card.is-reached {
-  border-color: var(--orange-d);
+  box-shadow: inset 0 0 0 1px var(--orange-d);
 }
 .l-timeline-card.is-reached .l-process-num {
   color: var(--orange-d);
   opacity: 1;
   transition: color .4s, opacity .4s;
 }
-.l-timeline-card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,.08);
-}
+
 
 /* Vertical line after last card */
 .l-timeline-post-line {
