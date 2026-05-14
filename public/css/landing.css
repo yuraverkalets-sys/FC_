@@ -892,6 +892,17 @@ nav.nav--on-light .nav-links a:hover { color: #17191B !important; }
 .l-timeline-item[data-index="1"] { top: 12px; z-index: 2; }
 .l-timeline-item[data-index="2"] { top: 24px; z-index: 3; }
 .l-timeline-item.is-visible { opacity: 1; }
+/* Cover the peeking rounded corners of the card below */
+.l-timeline-item[data-index="1"]::before,
+.l-timeline-item[data-index="2"]::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: var(--bg);
+}
 
 .l-timeline-card {
   background: var(--surface);
